@@ -2,8 +2,6 @@
 
 The name stands for "array of objects to" and what it does is convert JSON or a plain ol' javascript array of objects into various data formats. 
 
-**Note:** it currently only works for flat objects with no nested properties.
-
 ### Install
 
 `npm install aoot`
@@ -76,8 +74,14 @@ console.log(XML)
 // </ROWSET>
 ```
 
+### Notes
+
+When dealing with nested objects or arrays the output follows these rules:
+
+- For a nested object the column is returned as `parent_child` with an underscore acting as the seperator.
+- For arrays the column is returned as `array\_0 and array\_1` with an underscore seperating the index.
+
 ### Todos
 
-- Make nested objects work
 - Add various options to XML output
 - Create tests
