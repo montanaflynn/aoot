@@ -1,6 +1,6 @@
 {
   "name": "aoot",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Convert an array of objects to data formats like csv, tsv and xml",
   "main": "index.js",
   "scripts": {
