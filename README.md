@@ -142,8 +142,9 @@ console.log(arr)
 
 console.log(JSON.stringify(arr))
 // [{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
+```
 
 ### Todos
 
-- Add various options to XML output
-- Create tests
+- Get XML to JSON working
+- Create proper unit tests
