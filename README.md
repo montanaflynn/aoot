@@ -119,7 +119,7 @@ console.log(aoot.csv(data))
 // Will,25,New Orleans,Orange County,Coos Bay,undefined
 ```
 
-Finally here's how you can convert CSV to an array:
+Finally here's how you can convert CSV to an array, assuming this is data.csv:
 
 ```csv
 name,age,location
@@ -128,8 +128,11 @@ George,22,San Francisco
 Chris,25,Costa Mesa
 ```
 
+Here's the CSVtoJSON.js
+
 ```js
-var csv = aoot.csv(flat)
+var data = fs.readFileSync('./data.csv')
+var csv = aoot.csv(data)
 var arr = aoot.json(csv, ",")
 
 console.log(arr)
@@ -138,7 +141,7 @@ console.log(arr)
 //   { name: 'Chris', age: '25', location: 'Costa Mesa' } ]
 
 console.log(JSON.stringify(arr))
-[{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
+// [{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
 
 ### Todos
 
