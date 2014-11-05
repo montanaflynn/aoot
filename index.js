@@ -13,7 +13,10 @@ module.exports = {
     return toXML(data)
   },
   array : function(data, seperator) {
-    return toJSON(data, seperator)
+    return toArray(data, seperator)
+  },
+  json : function(data, seperator) {
+    return toArray(data, seperator, true)
   }
 }
 
@@ -165,11 +168,13 @@ function flatten(object) {
 }
 
 // Let's go the other way around and parse CSV, TSV, SV, XML into JSON arrays 
-function toJSON(data, seperator) {
+function toArray(data, seperator, json) {
 
-  console.log(data)
   // If we have a seperator use parseSV otherwise assume it's XML
-  return seperator ? parseSV(data, ",") : parseXML(data)
+  var array = seperator ? parseSV(data, ",") : parseXML(data)
+
+  // If we have JSON arg then lets jsonify it with pretty-print
+  return (json) ? JSON.stringify(array, null, 4) : array
 
 }
 

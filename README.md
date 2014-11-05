@@ -8,7 +8,11 @@ The name stands for "array of objects to" and what it does is convert JSON or a 
 
 ### Usage
 
-Assume you have this data in a file called data.json
+
+
+### Examples
+
+##### convert JSON arrays of objects to a csv, tsv and even xml. 
 
 ```json
 [
@@ -30,17 +34,11 @@ Assume you have this data in a file called data.json
 ]
 ```
 
-Now we can use aoot to convert that JSON to a seperated value format like csv or tsv and also xml.
-
 ```js
 var aoot = require('aoot')
 var data = require('./data.json')
 
 var CSV = aoot.csv(data)
-var TSV = aoot.tsv(data)
-var XML = aoot.xml(data)
-var arr = aoot.array(CSV, ",")
-
 console.log(CSV)
 
 // name,age,location
@@ -48,6 +46,7 @@ console.log(CSV)
 // George,22,San Francisco
 // Chris,25,Costa Mesa
 
+var TSV = aoot.tsv(data)
 console.log(TSV)
 
 // name	age	location
@@ -55,6 +54,7 @@ console.log(TSV)
 // George	22	San Francisco
 // Chris	25	Costa Mesa
 
+var XML = aoot.xml(data)
 console.log(XML)
 
 // <?xml version="1.0"?>
@@ -76,21 +76,15 @@ console.log(XML)
 //   </ROW>
 // </ROWSET>
 
-console.log(arr)
-
-// [ { name: 'Montana', age: '27', location: 'San Francisco' },
-//  { name: 'George', age: '22', location: 'San Francisco' },
-//  { name: 'Chris', age: '25', location: 'Costa Mesa' } ]
-
 ```
+
+##### Nested objects and arrays
 
 When dealing with nested objects or arrays the output follows these rules:
 
 - For a nested object an underscore seperates the parents from children.
 - For arrays an underscore seperates the index of the item from the property name.
 - Any data that is not found will be marked as undefined.
-
-Here's an example:
 
 ```js
 var data = [
@@ -119,7 +113,7 @@ console.log(aoot.csv(data))
 // Will,25,New Orleans,Orange County,Coos Bay,undefined
 ```
 
-Finally here's how you can convert CSV to an array, assuming this is data.csv:
+##### Convert CSV to a native array or JSON
 
 ```csv
 name,age,location
@@ -133,16 +127,23 @@ Here's the CSVtoJSON.js
 ```js
 var data = fs.readFileSync('./data.csv')
 var csv = aoot.csv(data)
-var arr = aoot.json(csv, ",")
+var arr = aoot.arr(csv, ",")
 
 console.log(arr)
 // [ { name: 'Montana', age: '27', location: 'San Francisco' },
 //   { name: 'George', age: '22', location: 'San Francisco' },
 //   { name: 'Chris', age: '25', location: 'Costa Mesa' } ]
 
-console.log(JSON.stringify(arr))
+
+var json = aoot.json(csv, ",")
+
+console.log(json)
 // [{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
 ```
+
+### Tests
+
+Clone the repo and `npm test`. Come back to star or clone and help with the following :-)
 
 ### Todos
 

@@ -50,8 +50,6 @@ console.log(aoot.xml(nested))
 
 var csv = aoot.csv(flat)
 var arr = aoot.array(csv, ",")
+var json = aoot.json(csv, ",")
 console.log(arr)
-console.log(JSON.stringify(arr))
-
-
-
+console.log(json)
