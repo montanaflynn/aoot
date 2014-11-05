@@ -18,6 +18,11 @@ var flat = [
     }
 ]
 
+var csv = aoot.csv(flat)
+var json = aoot.json(csv, ",")
+console.log(json)
+
+
 console.log(aoot.csv(flat))
 console.log(aoot.tsv(flat))
 console.log(aoot.sv(flat, ";"))
@@ -47,3 +52,11 @@ console.log(aoot.csv(nested))
 console.log(aoot.tsv(nested))
 console.log(aoot.sv(nested, ";"))
 console.log(aoot.xml(nested))
+
+var csv = aoot.csv(flat)
+var arr = aoot.array(csv, ",")
+console.log(arr)
+console.log(JSON.stringify(arr))
+
+
+

@@ -4,13 +4,16 @@ module.exports = {
     return toSV(data, seperator)
   },
   csv : function(data) {
-    return toSV(data,",")
+    return toSV(data, ",")
   },
   tsv : function(data) {
-    return toSV(data,"\t")
+    return toSV(data, "\t")
   },
   xml : function(data) {
     return toXML(data)
+  },
+  array : function(data, seperator) {
+    return toJSON(data, seperator)
   }
 }
 
@@ -108,7 +111,7 @@ function getProperties(data) {
     }
 
   }
-  
+
   // Throw an error since there are no properties
   if (!properties.length) throw new Error('Data has no properties!');
 
@@ -159,4 +162,73 @@ function flatten(object) {
 
   }
   
+}
+
+// Let's go the other way around and parse CSV, TSV, SV, XML into JSON arrays 
+function toJSON(data, seperator) {
+
+  console.log(data)
+  // If we have a seperator use parseSV otherwise assume it's XML
+  return seperator ? parseSV(data, ",") : parseXML(data)
+
+}
+
+// PARSE SV DATA INTO JSON
+// @todo support nested objects and arrays like this 
+// name,age,location_current,location_previous_0,location_previous_1,location_previous_2
+// Montana,27,San Francisco,San Diego,Newport Beach,Mammoth Mountain
+// Will,25,New Orleans,Orange County,Coos Bay,undefined
+
+function parseSV(data, seperator) {
+  var json = []
+
+  var lines = data.toString().split("\n")
+  var properties = lines[0].split(",")
+
+  for(var i=1;i < lines.length;i++) {
+    var values = lines[i].split(",")
+
+    if (!lines[i].length) continue
+
+    var obj = {}
+    for(var j=0;j < properties.length; j++) {
+
+      try {
+        obj[properties[j]] = values[j]
+      } catch(err) {
+        obj[properties[j]] = ""
+      }
+    }
+    json.push(obj)
+  }
+
+  return json
+}
+
+// PARSE XML DATA INTO JSON
+// @todo figure this out
+// <?xml version="1.0"?>
+// <ROWSET>
+//   <ROW>
+//     <name>Montana</name>
+//     <age>27</age>
+//     <location_current>San Francisco</location_current>
+//     <location_previous_0>San Diego</location_previous_0>
+//     <location_previous_1>Newport Beach</location_previous_1>
+//     <location_previous_2>Mammoth Mountain</location_previous_2>
+//   </ROW>
+// </ROWSET>
+function parseXML(data) {
+
+  throw new Error('This has not been implemented yet!')
+
+  // Remove xml 
+  // Keep Rows
+  // Loop Rows
+  // Loop Nodes in Rows
+  // Get tag name
+  // Destroy opening tag
+  // Destroy ending tag
+  // Have tag content
+
 }

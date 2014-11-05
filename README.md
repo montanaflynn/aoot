@@ -39,6 +39,7 @@ var data = require('./data.json')
 var CSV = aoot.csv(data)
 var TSV = aoot.tsv(data)
 var XML = aoot.xml(data)
+var arr = aoot.array(CSV, ",")
 
 console.log(CSV)
 
@@ -74,9 +75,14 @@ console.log(XML)
 //     <location>Costa Mesa</location>
 //   </ROW>
 // </ROWSET>
-```
 
-### Notes
+console.log(arr)
+
+// [ { name: 'Montana', age: '27', location: 'San Francisco' },
+//  { name: 'George', age: '22', location: 'San Francisco' },
+//  { name: 'Chris', age: '25', location: 'Costa Mesa' } ]
+
+```
 
 When dealing with nested objects or arrays the output follows these rules:
 
@@ -112,6 +118,27 @@ console.log(aoot.csv(data))
 // Montana,27,San Francisco,San Diego,Newport Beach,Mammoth Mountain
 // Will,25,New Orleans,Orange County,Coos Bay,undefined
 ```
+
+Finally here's how you can convert CSV to an array:
+
+```csv
+name,age,location
+Montana,27,San Francisco
+George,22,San Francisco
+Chris,25,Costa Mesa
+```
+
+```js
+var csv = aoot.csv(flat)
+var arr = aoot.json(csv, ",")
+
+console.log(arr)
+// [ { name: 'Montana', age: '27', location: 'San Francisco' },
+//   { name: 'George', age: '22', location: 'San Francisco' },
+//   { name: 'Chris', age: '25', location: 'Costa Mesa' } ]
+
+console.log(JSON.stringify(arr))
+[{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
 
 ### Todos
 
