@@ -180,29 +180,38 @@ function toJSON(data, seperator) {
 // Will,25,New Orleans,Orange County,Coos Bay,undefined
 
 function parseSV(data, seperator) {
-  var json = []
+  var arr = []
 
+  // Split into lines and properties
   var lines = data.toString().split("\n")
   var properties = lines[0].split(",")
 
-  for(var i=1;i < lines.length;i++) {
+  // Loop over lines skipping the first
+  for(var i = 1; i < lines.length; i++) {
+
+    // Store the values in an array
     var values = lines[i].split(",")
 
+    // Skip empty lines
     if (!lines[i].length) continue
 
+    // Create a temp object
     var obj = {}
-    for(var j=0;j < properties.length; j++) {
 
-      try {
-        obj[properties[j]] = values[j]
-      } catch(err) {
-        obj[properties[j]] = ""
-      }
+    // Loop properties
+    for (var n = 0; n < properties.length; n++) {
+
+      // Store values in their property
+      obj[properties[n]] = values[n]
+
     }
-    json.push(obj)
+
+    // Push the temp object into the array
+    arr.push(obj)
+
   }
 
-  return json
+  return arr
 }
 
 // PARSE XML DATA INTO JSON
