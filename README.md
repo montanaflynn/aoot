@@ -1,6 +1,6 @@
 # aoot
 
-The name stands for "array of objects to" and what it does is convert JSON or a plain ol' javascript array of objects into various data formats. 
+Convert an array of objects to and from various data formats such as CSV, TSV, XML and JSON. 
 
 ### Install
 
@@ -36,10 +36,9 @@ var json = aoot.json(json, "|")
 // Coming soon?
 ```
 
-
 ### Examples
 
-##### Example data.json file
+#### Example data.json file
 
 ```json
 [
@@ -61,7 +60,7 @@ var json = aoot.json(json, "|")
 ]
 ```
 
-##### JSON to CSV
+#### JSON to CSV
 
 ```js
 var aoot = require('aoot')
@@ -76,7 +75,7 @@ console.log(CSV)
 // Chris,25,Costa Mesa
 ```
 
-##### JSON to XML
+#### JSON to XML
 
 ```js
 var aoot = require('aoot')
@@ -105,7 +104,7 @@ console.log(XML)
 // </ROWSET>
 ```
 
-##### Nested objects and arrays
+#### Nested objects and arrays
 
 When dealing with nested objects or arrays the output follows these rules:
 
@@ -140,7 +139,7 @@ console.log(aoot.csv(data))
 // Will,25,New Orleans,Orange County,Coos Bay,undefined
 ```
 
-##### Convert CSV to a native array or JSON
+#### Convert CSV to a native array or JSON
 
 ```csv
 name,age,location
