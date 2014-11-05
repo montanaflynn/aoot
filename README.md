@@ -1,6 +1,8 @@
 # aoot
 
-The name stands for "array of objects to" and what it does is convert JSON or a plain ol' javascript array of objects into various data formats. **Note** currently it only works for flat objects with no nested properties. See example below.
+The name stands for "array of objects to" and what it does is convert JSON or a plain ol' javascript array of objects into various data formats. 
+
+**Note:** it currently only works for flat objects with no nested properties.
 
 ### Install
 
