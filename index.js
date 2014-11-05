@@ -20,9 +20,6 @@ function toSV(data, seperator) {
   // Get the properties in provided data
   var properties = getProperties(data)
 
-  // Throw an error since there are no properties
-  if (!properties.length) throw new Error('Data has no properties!');
-
   // Split the properties by provided seperator
   var output = properties.join(seperator) + "\n"
 
@@ -111,6 +108,9 @@ function getProperties(data) {
     }
 
   }
+  
+  // Throw an error since there are no properties
+  if (!properties.length) throw new Error('Data has no properties!');
 
   // Return the properties we found
   return properties
