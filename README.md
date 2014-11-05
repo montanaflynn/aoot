@@ -10,23 +10,25 @@ The name stands for "array of objects to" and what it does is convert JSON or a 
 
 Assume you have this data in a file called data.json
 
-	[
-	    {
-	        "name": "Montana",
-	        "age": 27,
-	        "location": "San Francisco"
-	    },
-	    {
-	        "name": "George",
-	        "age": 22,
-	        "location": "San Francisco"
-	    },
-	    {
-	        "name": "Chris",
-	        "age": 25,
-	        "location": "Costa Mesa"
-	    }
-	]
+```json
+[
+    {
+        "name": "Montana",
+        "age": 27,
+        "location": "San Francisco"
+    },
+    {
+        "name": "George",
+        "age": 22,
+        "location": "San Francisco"
+    },
+    {
+        "name": "Chris",
+        "age": 25,
+        "location": "Costa Mesa"
+    }
+]
+```
 
 Now we can use aoot to convert that JSON to a seperated value format like csv or tsv and also xml.
 
