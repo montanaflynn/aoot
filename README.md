@@ -4,15 +4,42 @@ The name stands for "array of objects to" and what it does is convert JSON or a 
 
 ### Install
 
-`npm install aoot`
+`npm install aoot --save`
 
 ### Usage
 
+```js
+var aoot = require('aoot')
+
+// JSON to CSV
+var csv = aoot.csv(json)
+
+// JSON to TSV
+var tsv = aoot.tsv(json)
+
+// JSON to user defined seperator
+var pipeSeperated = aoot.sv(json, "|")
+
+// JSON to XML
+var xml = aoot.xml(json)
+
+// CSV to JSON
+var json = aoot.json(json, ",")
+
+// TSV to JSON
+var json = aoot.json(json, "\t")
+
+// User defined seperator to JSON
+var json = aoot.json(json, "|")
+
+// XML to JSON
+// Coming soon?
+```
 
 
 ### Examples
 
-##### convert JSON arrays of objects to a csv, tsv and even xml. 
+##### Example data.json file
 
 ```json
 [
@@ -34,6 +61,8 @@ The name stands for "array of objects to" and what it does is convert JSON or a 
 ]
 ```
 
+##### JSON to CSV
+
 ```js
 var aoot = require('aoot')
 var data = require('./data.json')
@@ -45,14 +74,13 @@ console.log(CSV)
 // Montana,27,San Francisco
 // George,22,San Francisco
 // Chris,25,Costa Mesa
+```
 
-var TSV = aoot.tsv(data)
-console.log(TSV)
+##### JSON to XML
 
-// name	age	location
-// Montana	27	San Francisco
-// George	22	San Francisco
-// Chris	25	Costa Mesa
+```js
+var aoot = require('aoot')
+var data = require('./data.json')
 
 var XML = aoot.xml(data)
 console.log(XML)
@@ -75,7 +103,6 @@ console.log(XML)
 //     <location>Costa Mesa</location>
 //   </ROW>
 // </ROWSET>
-
 ```
 
 ##### Nested objects and arrays
@@ -122,12 +149,9 @@ George,22,San Francisco
 Chris,25,Costa Mesa
 ```
 
-Here's the CSVtoJSON.js
-
 ```js
 var data = fs.readFileSync('./data.csv')
-var csv = aoot.csv(data)
-var arr = aoot.arr(csv, ",")
+var arr = aoot.arr(data, ",")
 
 console.log(arr)
 // [ { name: 'Montana', age: '27', location: 'San Francisco' },
