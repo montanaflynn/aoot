@@ -1,7 +1,7 @@
 // Include source 
-var toSV = require(__dirname + '/src/sv.js')
-var toXML = require(__dirname + '/src/xml.js')
-var toArray = require(__dirname + '/src/array.js')
+var toSV = require(__dirname + '/lib/sv.js')
+var toXML = require(__dirname + '/lib/xml.js')
+var toArray = require(__dirname + '/lib/array.js')
 
 // Export the aoot public API
 module.exports = {
