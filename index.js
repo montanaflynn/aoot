@@ -48,7 +48,8 @@ function toXML(data) {
 
   for (var i = 0; i < data.length; i++) {
 
-    var d = data[i]
+    var d = flatten(data[i])
+
     output += '\t<ROW>\n'
 
     for (var n = 0; n < props.length; n++) {
