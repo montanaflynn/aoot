@@ -17,7 +17,7 @@ var csv = aoot.csv(json)
 // JSON to TSV
 var tsv = aoot.tsv(json)
 
-// JSON to user defined seperator
+// JSON to user defined seperated values
 var pipeSeperated = aoot.sv(json, "|")
 
 // JSON to XML
@@ -29,7 +29,7 @@ var json = aoot.json(json, ",")
 // TSV to JSON
 var json = aoot.json(json, "\t")
 
-// User defined seperator to JSON
+// User defined seperated values to JSON
 var json = aoot.json(json, "|")
 
 // XML to JSON
