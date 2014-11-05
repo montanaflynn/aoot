@@ -1,3 +1,4 @@
+// Export the aoot public API
 module.exports = {
   sv : function(data, seperator) {
     return toSV(data, seperator)
@@ -13,93 +14,149 @@ module.exports = {
   }
 }
 
+// Helper function for csv, tsv and similar formats
 function toSV(data, seperator) {
 
-  var props = getProps(data)
+  // Get the properties in provided data
+  var properties = getProperties(data)
 
-  var output = props.join(seperator) + "\n"
+  // Throw an error since there are no properties
+  if (!properties.length) throw new Error('Data has no properties!');
 
+  // Split the properties by provided seperator
+  var output = properties.join(seperator) + "\n"
+
+  // Loop over the data's objects
   for (var i = 0; i < data.length; i++) {
 
+    // Flatten the object
     var d = flatten(data[i])
 
-    for (var n = 0; n < props.length; n++) {
+    // Loop over the properties we found
+    for (var n = 0; n < properties.length; n++) {
 
-      var p = props[n]
+      // Save the value of the property
+      var value = d[properties[n]]
 
-      output += (n === props.length -1) ? d[p] : d[p] + seperator
-
+      // Add the properties to the output
+      output += (n === properties.length -1) ? value : value + seperator
     }
 
+    // Finish the output with a newline
     output += "\n"
-
   }
 
+  // Return the new data format 
   return output
+
 }
 
 
+// Convert to XML format
 function toXML(data) {
 
-  var props = getProps(data)
+  // Get the properties
+  var properties = getProperties(data)
 
+  // Start with static XML stuff
   var output = '<?xml version="1.0"?>\n'
   output += '<ROWSET>\n'
 
+  // Loop over each object in the data
   for (var i = 0; i < data.length; i++) {
 
+    // Flatten the object
     var d = flatten(data[i])
 
+    // Add the row for this object
     output += '\t<ROW>\n'
 
-    for (var n = 0; n < props.length; n++) {
-      var p = props[n]
-      output += '\t\t<'+p+'>'+d[p]+'</'+p+'>\n'
+    // Loop over the properties we found
+    for (var n = 0; n < properties.length; n++) {
+
+      // Add a new node for each property with the value inside
+      var prop = properties[n]
+      var value = d[prop]
+      output += '\t\t<'+prop+'>'+value+'</'+prop+'>\n'
     }
 
+    // Close out the row
     output += '\t</ROW>\n'
-
   }
 
+  // Close out the XML
   output += '</ROWSET>\n'
 
+  // Return the new XML data
   return output
 
 }
 
-function getProps(data) {
-  var props = []
+// Get all the properties in the data's objects
+function getProperties(data) {
 
+  var properties = []
+
+  // Loop over each object in the data
   for (var i = 0; i < data.length; i++) {
+
+    // Loop over each property in the flattened object
     for (property in flatten(data[i])) {
-      if (props.indexOf(property) === -1){
-        props.push(property)
+
+      // Only add to properties if it's new
+      if (properties.indexOf(property) === -1){
+        properties.push(property)
       }
+
     }
+
   }
 
-  return props
+  // Return the properties we found
+  return properties
+
 }
 
-function flatten(json) {
+// Flatten object
+function flatten(object) {
+
+  // The new flat object to return
   var flattened = {}
 
-  walk(json, function(path, item) {
-    flattened[path.join('_')] = item
+  // Walk over each property
+  walk(object, function(path, property) {
+
+    // return new properties to the flattened object
+    flattened[path.join('_')] = property
+
   })
 
+  // Return the new flat object
   return flattened
 
-  function walk(obj, walker, path) {
-    var item
+  // Walk over the object
+  function walk(obj, give, path) {
+
+    var property
     path = path || []
+
+    // Loop over each property in the object
     for (key in obj) {
-      item = obj[key]
-      if (typeof item == 'object') {
-        walk(item, walker, path.concat(key))
+
+      // Save the property
+      property = obj[key]
+
+      // If property is an object keep walking
+      if (typeof property == 'object') {
+        walk(property, give, path.concat(key))
+
+      // Otherwise give the property back
       } else {
-        walker(path.concat(key), item)
+        give(path.concat(key), property)
       }
+
     }
+
   }
+  
 }
