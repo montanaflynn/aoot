@@ -1,10 +1,6 @@
-# aoot (data transformer)
+# aoot
 
-The name stands for "array of objects to" and what it does is convert JSON or a plain ol' javascript array of objects into various data formats. 
-
-### Caveats
-
-Right now it only works for flat objects (no nested properties) and it is very immature. Literally the result of 20 minutes of hacking to make my life easier on a seperate project. It works though.
+The name stands for "array of objects to" and what it does is convert JSON or a plain ol' javascript array of objects into various data formats. **Note** currently it only works for flat objects with no nested properties. See example below.
 
 ### Install
 
@@ -41,44 +37,42 @@ var data = require('./data.json')
 var CSV = aoot.csv(data)
 var TSV = aoot.tsv(data)
 var XML = aoot.xml(data)
+
+console.log(CSV)
+
+// name,age,location
+// Montana,27,San Francisco
+// George,22,San Francisco
+// Chris,25,Costa Mesa
+
+console.log(TSV)
+
+// name	age	location
+// Montana	27	San Francisco
+// George	22	San Francisco
+// Chris	25	Costa Mesa
+
+console.log(XML)
+
+// <?xml version="1.0"?>
+// <ROWSET>
+//   <ROW>
+//     <name>Montana</name>
+//     <age>27</age>
+//     <location>San Francisco</location>
+//   </ROW>
+//   <ROW>
+//     <name>George</name>
+//     <age>22</age>
+//     <location>San Francisco</location>
+//   </ROW>
+//   <ROW>
+//     <name>Chris</name>
+//     <age>25</age>
+//     <location>Costa Mesa</location>
+//   </ROW>
+// </ROWSET>
 ```
-
-Let's look at the output for each data format:
-
-`console.log(CSV)`
-
-	name,age,location
-	Montana,27,San Francisco
-	George,22,San Francisco
-	Chris,25,Costa Mesa
-
-`console.log(TSV)`
-
-	name	age	location
-	Montana	27	San Francisco
-	George	22	San Francisco
-	Chris	25	Costa Mesa
-
-`console.log(XML)`
-
-	<?xml version="1.0"?>
-	<ROWSET>
-	  <ROW>
-	    <name>Montana</name>
-	    <age>27</age>
-	    <location>San Francisco</location>
-	  </ROW>
-	  <ROW>
-	    <name>George</name>
-	    <age>22</age>
-	    <location>San Francisco</location>
-	  </ROW>
-	  <ROW>
-	    <name>Chris</name>
-	    <age>25</age>
-	    <location>Costa Mesa</location>
-	  </ROW>
-	</ROWSET>
 
 ### Todos
 
