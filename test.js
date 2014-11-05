@@ -18,11 +18,6 @@ var flat = [
     }
 ]
 
-var csv = aoot.csv(flat)
-var json = aoot.json(csv, ",")
-console.log(json)
-
-
 console.log(aoot.csv(flat))
 console.log(aoot.tsv(flat))
 console.log(aoot.sv(flat, ";"))
