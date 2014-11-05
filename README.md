@@ -79,7 +79,7 @@ console.log(XML)
 When dealing with nested objects or arrays the output follows these rules:
 
 - For a nested object the column is returned as `parent_child` with an underscore acting as the seperator.
-- For arrays the column is returned as `array\_0 and array\_1` with an underscore seperating the index.
+- For arrays the column is returned as `array_0 and array_1` with an underscore seperating the index.
 
 ### Todos
 
