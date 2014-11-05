@@ -1,0 +1,28 @@
+{
+  "name": "aoot",
+  "version": "0.0.2",
+  "description": "Convert an array of objects to data formats like csv, tsv and xml",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/montanaflynn/aoot.git"
+  },
+  "keywords": [
+    "convert",
+    "csv",
+    "tsv",
+    "xml",
+    "json",
+    "data",
+    "format"
+  ],
+  "author": "Montana Flynn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/montanaflynn/aoot/issues"
+  },
+  "homepage": "https://github.com/montanaflynn/aoot"
+}
