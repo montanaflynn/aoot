@@ -24,13 +24,13 @@ var pipeSeperated = aoot.sv(json, "|")
 var xml = aoot.xml(json)
 
 // CSV to JSON
-var json = aoot.json(json, ",")
+var json = aoot.json(csv, ",")
 
 // TSV to JSON
-var json = aoot.json(json, "\t")
+var json = aoot.json(tsv, "\t")
 
 // User defined seperated values to JSON
-var json = aoot.json(json, "|")
+var json = aoot.json(pipeSeperated, "|")
 
 // XML to JSON
 // Coming soon?
