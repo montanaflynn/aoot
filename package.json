@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/montanaflynn/aoot/issues"
   },
-  "homepage": "https://github.com/montanaflynn/aoot"
+  "homepage": "https://github.com/montanaflynn/aoot",
+  "dependencies": {
+    "yamljs": "^0.2.1"
+  }
 }
