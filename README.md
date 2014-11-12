@@ -23,6 +23,9 @@ var pipeSeperated = aoot.sv(json, "|")
 // JSON to XML
 var xml = aoot.xml(json)
 
+// JSON to YAML
+var yaml = aoot.yaml(json)
+
 // CSV to JSON
 var json = aoot.json(csv, ",")
 
