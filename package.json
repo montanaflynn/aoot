@@ -1,6 +1,6 @@
 {
   "name": "aoot",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Convert an array of objects to JSON, CSV, TSV, XML and YAML",
   "main": "index.js",
   "scripts": {
