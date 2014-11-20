@@ -1,6 +1,6 @@
 # aoot
 
-Convert an array of objects to and from various data formats such as CSV, TSV, XML and JSON. 
+Converts an array of objects to and from data formats JSON, CSV, TSV, XML and YAML.
 
 ### Install
 
@@ -167,11 +167,11 @@ console.log(json)
 // [{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
 ```
 
-### Tests
-
-Clone the repo and `npm test`. Come back to star or clone and help with the following :-)
-
 ### Todos
 
 - Get XML to JSON working
 - Create proper unit tests
+
+### MIT license
+
+Copyright (c) 2014, Montana Flynn (http://anonfunction.com/)

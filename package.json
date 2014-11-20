@@ -1,9 +1,10 @@
 {
   "name": "aoot",
   "version": "0.1.5",
-  "description": "Convert an array of objects to JSON, CSV, TSV, XML and YAML",
+  "description": "Converts an array of objects to and from data formats JSON, CSV, TSV, XML and YAML",
   "main": "index.js",
   "scripts": {
+    "pretest" : "npm install",
     "test": "node test.js"
   },
   "repository": {
@@ -21,7 +22,7 @@
     "format"
   ],
   "author": "Montana Flynn",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/montanaflynn/aoot/issues"
   },
