@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "node test.js"
+    "test": "mocha test/"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
   "homepage": "https://github.com/montanaflynn/aoot",
   "dependencies": {
     "yamljs": "^0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4"
   }
 }

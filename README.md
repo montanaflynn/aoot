@@ -1,4 +1,4 @@
-# aoot
+# aoot [![Test Status](https://img.shields.io/wercker/ci/551bc8323993a61109001091.svg)](https://app.wercker.com/#applications/551bc8323993a61109001091) ![License](https://img.shields.io/npm/l/aoot.svg)
 
 Converts an array of objects to and from data formats JSON, CSV, TSV, XML and YAML.
 
@@ -39,74 +39,6 @@ var json = aoot.json(pipeSeperated, "|")
 // Coming soon?
 ```
 
-### Examples
-
-#### Example data.json file
-
-```json
-[
-    {
-        "name": "Montana",
-        "age": 27,
-        "location": "San Francisco"
-    },
-    {
-        "name": "George",
-        "age": 22,
-        "location": "San Francisco"
-    },
-    {
-        "name": "Chris",
-        "age": 25,
-        "location": "Costa Mesa"
-    }
-]
-```
-
-#### JSON to CSV
-
-```js
-var aoot = require('aoot')
-var data = require('./data.json')
-
-var CSV = aoot.csv(data)
-console.log(CSV)
-
-// name,age,location
-// Montana,27,San Francisco
-// George,22,San Francisco
-// Chris,25,Costa Mesa
-```
-
-#### JSON to XML
-
-```js
-var aoot = require('aoot')
-var data = require('./data.json')
-
-var XML = aoot.xml(data)
-console.log(XML)
-
-// <?xml version="1.0"?>
-// <ROWSET>
-//   <ROW>
-//     <name>Montana</name>
-//     <age>27</age>
-//     <location>San Francisco</location>
-//   </ROW>
-//   <ROW>
-//     <name>George</name>
-//     <age>22</age>
-//     <location>San Francisco</location>
-//   </ROW>
-//   <ROW>
-//     <name>Chris</name>
-//     <age>25</age>
-//     <location>Costa Mesa</location>
-//   </ROW>
-// </ROWSET>
-```
-
 #### Nested objects and arrays
 
 When dealing with nested objects or arrays the output follows these rules:
@@ -142,36 +74,12 @@ console.log(aoot.csv(data))
 // Will,25,New Orleans,Orange County,Coos Bay,undefined
 ```
 
-#### Convert CSV to a native array or JSON
-
-```csv
-name,age,location
-Montana,27,San Francisco
-George,22,San Francisco
-Chris,25,Costa Mesa
-```
-
-```js
-var data = fs.readFileSync('./data.csv')
-var arr = aoot.arr(data, ",")
-
-console.log(arr)
-// [ { name: 'Montana', age: '27', location: 'San Francisco' },
-//   { name: 'George', age: '22', location: 'San Francisco' },
-//   { name: 'Chris', age: '25', location: 'Costa Mesa' } ]
-
-
-var json = aoot.json(csv, ",")
-
-console.log(json)
-// [{"name":"Montana","age":"27","location":"San Francisco"},{"name":"George","age":"22","location":"San Francisco"},{"name":"Chris","age":"25","location":"Costa Mesa"}]
-```
-
 ### Todos
 
-- Get XML to JSON working
-- Create proper unit tests
+- XML to JSON 
+- Write unit tests
+- Add CLI tool
 
 ### MIT license
 
-Copyright (c) 2014, Montana Flynn (http://anonfunction.com/)
+Copyright (c) 2015, Montana Flynn (http://anonfunction.com/)
