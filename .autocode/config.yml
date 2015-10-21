@@ -1,0 +1,7 @@
+name: montanaflynn/aoot
+author:
+  name: Montana Flynn
+  email: montana@montanaflynn.me
+  url: 'http://anonfunction.com'
+copyright: 2015 Montana Flynn
+description: 'Convert array of objects to and from data formats such as CSV, TSV, XML and JSON.'
